@@ -4,31 +4,20 @@
 #include <string.h>
 #include <unistd.h>
 
-char *ft_strrchr(const char *string, int character)
+char	*ft_strchr(const char *s, int c)
 {
-	int i;
-	int f;
-	const char *temp;
+	unsigned i;
 
-	temp = string;
 	i = 0;
-	f = -1;
-	while(temp[i])
+	while (s[i] != '\0')
 	{
-		if (temp[i] == character)
-			f = i;
+		if (s[i] == c)
+			return ((char*)&s[i]);
 		i++;
 	}
-	if (f == -1)
-		return (NULL);
-	i = 0;
-	while(i < f)
-	{
-		temp += 1;
-		i++;
-	}
-	return((char *)temp);
+	return (NULL);
 }
+
 
 int main(void)
 {
