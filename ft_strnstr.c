@@ -14,29 +14,28 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*bigcp;
-	char	*littlecp;
-	unsigned		i;
+	const char	*b = big;
+	const char	*l = little;
+	size_t		n = len;
 
-	i = 0;
-	bigcp = (char *) big;
-	littlecp = (char *) little;
-	while (bigcp[0])
+	if (l == NULL)
+		return ((char *) big);
+	while (*big)
 	{
-		while(bigcp[0] == littlecp[0])
+		l = little;
+		while (*l && (*l == *b))
 		{
-			littlecp += 1;
-			bigcp += 1;
+			//printf("%zu\t", n); printf("%s\n", big);;
+			if (n == 0)
+				return (NULL);
+			l++;
+			b++;
+			n--;
 		}
-		if ((i == len - 1) || (ft_strlen(little) > len))
-			return (NULL);
-		if(littlecp[0] == '\0')
-		{
-			return ((char *)(big += i));
-		}
-		bigcp += 1;
-		littlecp = (char *) little;
-		i++;
+		if (!(*l))
+			return ((char *) big);
+		big++;
+		b = big;
 	}
 	return (NULL);
 }
