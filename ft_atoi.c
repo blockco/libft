@@ -22,9 +22,10 @@ int	ft_atoi(const char *c)
 	sign = 1;
 	while (c[i] <= ' ')
 		i++;
-	if (c[i] == '-')
+	if (c[i] == '-' || c[i] == '+')
 	{
-		sign *= -1;
+		if (c[i] == '-')
+			sign *= -1;
 		i++;
 	}
 	while (ft_isdigit(c[i]))
