@@ -1,36 +1,22 @@
-#include <string.h>
-#include <stdio.h>
-#include "ft_lib.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lhurt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/22 10:24:52 by lhurt             #+#    #+#             */
+/*   Updated: 2016/09/22 10:24:55 by lhurt            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strdup(const char *srcString)
+#include "libft.h"
+
+char	*ft_strdup(const char *s1)
 {
-	int size;
-	char *destString;
-
-	if (srcString == NULL)
-		return NULL;
-
-	size = ft_strlen(srcString);
-	destString = malloc(sizeof(char) * (size + 1));
-	ft_strncpy(destString, srcString, size);
-	return (destString);
-}
-
-int main()
-{
-
-	printf("%s\n",ft_strdup("dank"));
-	printf("%s\n",ft_strdup("bye"));
-	printf("%s\n",ft_strdup("hello"));
-	printf("%s\n",ft_strdup("rick"));
-	printf("%s\n",ft_strdup("rick"));
-
-	printf("%s\n","--------------------------");
-	
-	printf("%s\n",strdup("dank"));
-	printf("%s\n",strdup("bye"));
-	printf("%s\n",strdup("hello"));
-	printf("%s\n",strdup("rick"));
-	printf("%s\n",strdup("rick"));
-	return 0;
+	char *tmp = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (tmp == NULL)
+		return (NULL);
+	ft_strcpy(tmp, s1);
+	return (tmp);
 }
