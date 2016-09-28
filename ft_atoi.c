@@ -3,35 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhurt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: chansen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/26 11:22:31 by lhurt             #+#    #+#             */
-/*   Updated: 2016/09/26 11:22:33 by lhurt            ###   ########.fr       */
+/*   Created: 2016/09/22 16:46:27 by chansen           #+#    #+#             */
+/*   Updated: 2016/09/22 16:46:28 by chansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *c)
+int		ft_atoi(const char *str)
 {
-	int i;
-	int	sign;
-	int	ans;
+	int		i;
+	int		nbr;
+	int		neg;
 
 	i = 0;
-	sign = 1;
-	while (c[i] <= ' ')
+	nbr = 0;
+	neg = 1;
+	while (str[i] <= ' ' || str[i] == '+')
 		i++;
-	if (c[i] == '-' || c[i] == '+')
+	if (str[i] == '-')
 	{
-		if (c[i] == '-')
-			sign *= -1;
+		neg = -1;
 		i++;
 	}
-	while (ft_isdigit(c[i]))
+	if (str[i] == '+' || str[i] <= ' ')
+		return (nbr);
+	while (str[i] != '\0')
 	{
-		ans = (ans * 10) + (c[i] - 48);
+		if (!(str[i] >= 48 && str[i] <= 57))
+			return (nbr *= neg);
+		nbr = nbr * 10 + (str[i] - '0');
 		i++;
 	}
-	return (ans * sign);
+	return (nbr *= neg);
+}
+
+int		main()
+{
+	char	*a;
+	char	*b;
+	char	*c;
+
+	a = "   + 1  ";
+	b = "11354223";
+	c = "   - 1   ";
+	
+	printf("%d\n", ft_atoi(a));
+	printf("%d\n", ft_atoi(b));
+	printf("%d\n", ft_atoi(c));
+	printf("%s\n", "---------------");
+	printf("%d\n", atoi(a));
+	printf("%d\n", atoi(b));
+	printf("%d\n", atoi(c));
+	//printf("%s\n", "---------------");
+	//printf("%d\n", ft_atoi2(a));
+	//printf("%d\n", ft_atoi2(b));
+	//printf("%d\n", ft_atoi2(c));
 }
