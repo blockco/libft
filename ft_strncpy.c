@@ -1,15 +1,25 @@
-#include "ft_lib.h"
+#include "libft.h"
 
-char *ft_strncpy(char *s1, char *s2, int max)
+char *ft_strncpy(char const *dst, char *src, size_t max)
 {
-	int i;
+	size_t	i;
+	size_t	temp;
+	char *d;
 
+	temp = max;
+	d = (char*)dst;
 	i = 0;
-	while (i <= max)
+
+	while (i < temp && src[i])
 	{
-		s2[i] = s1[i];
+		d[i] = src[i];
 		i++;
 	}
-	s2[i] = '\0';
-	return s1;
+	if (max != 0)
+		while(i < max)
+		{
+			d[i] = '\0';
+			i++;
+		}
+	return (d);
 }
