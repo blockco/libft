@@ -1,28 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/01 14:46:30 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:46:32 by rpassafa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+#include "libft.h"
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t max)
 {
-	const char	*b = big;
-	const char	*l = little;
-	size_t		n = len;
+	char	*haycp;
+	char	*needlecp;
+	size_t	i;
+	size_t	j;
 
-	if (l == NULL)
-		return ((char *) big);
-	while (*big)
+	i = 0;
+	j = 0;
+	haycp = (char *)haystack;
+	needlecp = (char *)needle;
+	if (!*needle)
+		return ((char*)haystack);
+	while (haycp[i] && i < max)
 	{
-		l = little;
-		while (*l && (*l == *b))
+		j = 0;
+		while (haycp[i + j] == needlecp[j] && (i + j) < max)
 		{
-			//printf("%zu\t", n); printf("%s\n", big);;
-			if (n == 0)
-				return (NULL);
-			l++;
-			b++;
-			n--;
+			j++;
+			if (j == ft_strlen(needlecp))
+				return ((char *)(haystack + (i)));
 		}
-		if (!(*l))
-			return ((char *) big);
-		big++;
-		b = big;
+		i++;
 	}
 	return (NULL);
 }

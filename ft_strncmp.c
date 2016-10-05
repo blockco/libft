@@ -1,36 +1,31 @@
-#include <string.h>
-#include <stdio.h>
-#include "ft_lib.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/01 14:45:05 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:45:09 by rpassafa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_strncmp(const char *s1, const char *s2, size_t length)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t l)
 {
-	unsigned	int		i;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
 	i = 0;
-	while((s1[i] == s2[i]) && (i <= length))
+	str1 = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	while (str1[i] || str2[i])
 	{
-		
-		if (s1[i] == '\0' && s2[i] == '\0')
-			return (s1[i-1] - s2[i-1]);
+		if ((s1[i] != s2[i]) && i < l)
+			return (((unsigned char)s1[i] - (unsigned char)s2[i]));
 		i++;
 	}
-	return (s1[i] - s2[i]);
-}
-
-int main()
-{
-
-	printf("%d\n",ft_strncmp("dank", "bye",2));
-	printf("%d\n",ft_strncmp("bye", "hello",6));
-	printf("%d\n",ft_strncmp("hello", "hello",1));
-	printf("%d\n",ft_strncmp("rick", "rick",5));
-	printf("%d\n",ft_strncmp("rick", "rick",-1));
-
-	printf("%s\n","--------------------------");
-	
-	printf("%d\n",strncmp("dank", "bye",2));
-	printf("%d\n",strncmp("bye", "hello",6));
-	printf("%d\n",strncmp("hello", "hello",1));
-	printf("%d\n",strncmp("rick", "rick",5));
-	printf("%d\n",strncmp("rick", "rick",-1));
-	return 0;
+	return (0);
 }

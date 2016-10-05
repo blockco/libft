@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhurt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/25 20:48:33 by lhurt             #+#    #+#             */
-/*   Updated: 2016/09/25 20:48:41 by lhurt            ###   ########.fr       */
+/*   Created: 2016/10/01 14:47:16 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:47:17 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 
 char	*ft_strstr(const char *big, const char *little)
 {
-	char	*bigcp;
-	char	*littlecp;
-	int		i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	bigcp = (char *) big;
-	littlecp = (char *) little;
-	while (bigcp[0])
+	if (big[i] == little[i] && big[i] == '\0')
+		return ((char*)&big[i]);
+	while (big[i] != '\0')
 	{
-		while(bigcp[0] == littlecp[0])
+		j = i;
+		while (big[j] == little[j - i] && big[j] != '\0')
+			j++;
+		if (little[j - i] == '\0')
 		{
-			littlecp += 1;
-			bigcp += 1;
+			return ((char*)&big[i]);
 		}
-		if(littlecp[0] == '\0')
-		{
-			return ((char *)(big += i));
-		}
-		bigcp += 1;
-		littlecp = (char *) little;
 		i++;
 	}
 	return (NULL);

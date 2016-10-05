@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/25 12:44:01 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/09/25 12:44:03 by rpassafa         ###   ########.fr       */
+/*   Created: 2016/10/01 14:41:50 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:41:52 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void	ft_strclr(char *s)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	else if (c >= 'a' && c <= 'z')
-		return (1);
-	else if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	ft_memset(s, '\0', ft_strlen(s));
 }

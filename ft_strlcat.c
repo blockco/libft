@@ -3,38 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chansen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/25 07:05:53 by chansen           #+#    #+#             */
-/*   Updated: 2016/09/25 07:05:54 by chansen          ###   ########.fr       */
+/*   Created: 2016/10/01 14:43:46 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/04 16:54:46 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcat(char * dst, const char * src, size_t size)
-{
-	char 		*d = dst;
-	const char 	*s = src;
-	size_t 		n = size;
+	char		*d;
+	const char	*s;
+	size_t		n;
 	size_t		dlen;
 
+	d = dst;
+	s = src;
+	n = size;
 	while (*d != '\0' && n-- != 0)
 		d++;
 	dlen = d - dst;
 	n = size - dlen;
-
 	if (n == 0)
 		return (dlen + ft_strlen(s));
 	while (*s != '\0')
@@ -48,12 +39,4 @@ size_t	ft_strlcat(char * dst, const char * src, size_t size)
 	}
 	*d = '\0';
 	return (dlen + (s - src));
-}
-
-int		main()
-{
-	char		s1[] = "abcdefg";
-	const char	s2[] = "gfedcba";
-	printf("%lu\n", ft_strlcat(s1, s2, 5));
-	printf("%lu\n", strlcat(s1, s2, 5));
 }

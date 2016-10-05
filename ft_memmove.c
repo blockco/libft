@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhurt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/24 12:20:26 by lhurt             #+#    #+#             */
-/*   Updated: 2016/09/24 12:20:28 by lhurt            ###   ########.fr       */
+/*   Created: 2016/10/01 14:37:45 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:37:48 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t count;
-	size_t end;
-	char *tmp;
-	char *d;
-	char *s;
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	d = (char*)dst;
-	s = (char*)src;
-	tmp = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
-	count = 0; 
-	if ((s == NULL) || (d == NULL))
-		return (NULL);
-	while (count < len)
+	d = (unsigned char*)dst;
+	s = (unsigned char*)src;
+	i = 0;
+	if (src > dst)
 	{
-		tmp[count] = s[count];
-		count++;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	end = count * 2;
-	while (count > 0)
+	else
 	{
-		count--;
-		d[count] = tmp[count];
+		while (len > 0)
+		{
+			len--;
+			d[len] = s[len];
+		}
 	}
-	free(tmp);
 	return (dst);
 }

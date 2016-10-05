@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/25 12:44:01 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/09/25 12:44:03 by rpassafa         ###   ########.fr       */
+/*   Created: 2016/10/01 14:42:46 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:45:51 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	if (c >= 'A' && c <= 'Z')
+	if (!ft_strcmp(s1, s2))
 		return (1);
-	else if (c >= 'a' && c <= 'z')
-		return (1);
-	else if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	return (0);
 }

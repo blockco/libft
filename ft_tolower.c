@@ -9,12 +9,13 @@
 /*   Updated: 2016/09/21 13:00:00 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_lib.h"
 
-int ft_tolower(int c)
+#include "libft.h"
+
+int	ft_tolower(int c)
 {
-	if(c > 64 && c < 91)
-		return(c + 32);
+	if (c > 64 && c < 91)
+		return (c + 32);
 	else
 		return (c);
 }

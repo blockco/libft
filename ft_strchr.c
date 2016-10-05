@@ -1,37 +1,30 @@
-#include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/01 14:41:37 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:41:39 by rpassafa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strchr(const char *string, int character)
+#include "libft.h"
+
+char	*ft_strchr(const char *string, int character)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(string[i])
+	while (string[0])
 	{
 		if (string[0] == character)
 			return ((char *)string);
 		else
 			string += 1;
 	}
+	if (string[0] == character)
+		return ((char *)string);
 	return (NULL);
-}
-
-int main(void)
-{
-	printf("%s\n",ft_strchr("familyisgood", 'h'));
-	printf("%s\n",ft_strchr("shitslit", 's'));
-	printf("%s\n",ft_strchr("familyisgood", 's'));
-	printf("%s\n",ft_strchr("familyisgood", 'f'));
-	printf("%s\n",ft_strchr("familyisgood", 'f'));
-	printf("%s\n",ft_strchr("familyisgood", 'g'));
-
-	printf("%s\n","---------------------------");
-
-	printf("%s\n",strchr("familyisgood", 'h'));
-	printf("%s\n",strchr("shitslit", 's'));
-	printf("%s\n",strchr("familyisgood", 's'));
-	printf("%s\n",strchr("familyisgood", 'f'));
-	printf("%s\n",strchr("familyisgood", 'f'));
-	printf("%s\n",strchr("familyisgood", 'g'));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhurt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/26 17:02:18 by lhurt             #+#    #+#             */
-/*   Updated: 2016/09/26 17:02:21 by lhurt            ###   ########.fr       */
+/*   Created: 2016/10/01 14:43:34 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:43:35 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,25 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *new;
+	char	*tmp;
+	int		count;
 
-	new = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	ft_strncpy(new, s1, ft_strlen(s1));
-	ft_strncat(new, s2, ft_strlen(s2));
-	return (new);
+	count = 0;
+	tmp = ft_strnew((ft_strlen(s1) + ft_strlen(s2)));
+	if (!tmp)
+		return (NULL);
+	while (s1[0])
+	{
+		tmp[count] = s1[0];
+		s1++;
+		count++;
+	}
+	while (s2[0])
+	{
+		tmp[count] = s2[0];
+		s2++;
+		count++;
+	}
+	tmp[count] = '\0';
+	return (tmp);
 }

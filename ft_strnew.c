@@ -1,51 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 14:47:57 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/10/01 14:47:58 by rpassafa         ###   ########.fr       */
+/*   Created: 2016/10/01 14:46:20 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:46:21 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		findspace(char *s)
+char	*ft_strnew(size_t size)
 {
-	int	i;
+	char *str;
 
-	i = 0;
-	while (s[i] <= ' ' && s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strtrim(char const *s)
-{
-	unsigned	i;
-	unsigned	start;
-	unsigned	end;
-	char		*new;
-
-	i = findspace((char*)s);
-	start = i;
-	while (s[i])
-		i++;
-	while (s[i] <= ' ' && i > start)
-		i--;
-	end = i;
-	new = ft_strnew(end - start + 1);
-	i = 0;
-	if (!new)
+	str = (char*)malloc(sizeof(char) * size + 1);
+	if (!str)
 		return (NULL);
-	while (start <= end)
-	{
-		new[i] = s[start];
-		start++;
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
+	ft_memset(str, 0, size + 1);
+	return (str);
 }

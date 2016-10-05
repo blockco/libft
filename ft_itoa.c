@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 15:54:15 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/01 14:00:25 by ahunt            ###   ########.fr       */
+/*   Created: 2016/10/01 14:35:42 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:35:44 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_size(int n)
+int		get_size(long n)
 {
 	int s;
 
 	s = 0;
 	while (n != 0)
 	{
-		n /= 10;
+		n = n / 10;
 		s++;
 	}
 	return (s);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*res;
 	int		size;

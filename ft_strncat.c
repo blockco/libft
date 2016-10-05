@@ -1,36 +1,29 @@
-#include "ft_lib.h"
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/01 14:44:44 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:44:45 by rpassafa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strncat(char *dest, const char *src, size_t maxLength)
-						//destinationg  //takes from here n bytes addsm to dest
+#include "libft.h"
+
+char	*ft_strncat(char *s1, const char *s2, size_t max)
 {
-	int start;
-	int i;
-	char *temp;
+	char	*str;
+	size_t	i;
 
+	str = s1;
 	i = 0;
-	temp = malloc(sizeof(dest));
-	ft_strcpy(temp,dest);
-	dest = malloc(ft_strlen(dest) + ft_strlen(src));
-	ft_strcpy(dest,temp);
-	start = ft_strlen(dest);
-	while(src[i])
-	{
-		dest[start] = src[i];
-		start++;
-		i++;
-		if ((unsigned)i == maxLength)
-			break;
-	}
-	dest[start] = '\0';
-	return(dest);
-}
-
-int main()
-{
-	printf("%s\n",ft_strncat("hi","bye",1));
-	printf("%s\n",ft_strncat(" "," ",2));
-	printf("%s\n",ft_strncat("yess","noo",-1));
-	return 0;
+	if (*s1)
+		while (*s1)
+			++s1;
+	while ((max-- && *s2))
+		*s1++ = *s2++;
+	s1[0] = '\0';
+	return (str);
 }

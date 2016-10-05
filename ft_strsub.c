@@ -1,51 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 14:47:57 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/10/01 14:47:58 by rpassafa         ###   ########.fr       */
+/*   Created: 2016/10/01 14:47:43 by rpassafa          #+#    #+#             */
+/*   Updated: 2016/10/01 14:47:44 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		findspace(char *s)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	char	*tmp;
+	size_t	i;
 
 	i = 0;
-	while (s[i] <= ' ' && s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strtrim(char const *s)
-{
-	unsigned	i;
-	unsigned	start;
-	unsigned	end;
-	char		*new;
-
-	i = findspace((char*)s);
-	start = i;
-	while (s[i])
-		i++;
-	while (s[i] <= ' ' && i > start)
-		i--;
-	end = i;
-	new = ft_strnew(end - start + 1);
-	i = 0;
-	if (!new)
+	tmp = ft_strnew(len);
+	if (!tmp)
 		return (NULL);
-	while (start <= end)
+	while (s[start] != '\0' && i < len)
 	{
-		new[i] = s[start];
+		tmp[i] = s[start];
 		start++;
 		i++;
 	}
-	new[i] = '\0';
-	return (new);
+	return (tmp);
 }
