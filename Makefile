@@ -1,115 +1,81 @@
+CC =	gcc
+
+FLAG =	-c -Wall -Wextra -Werror
+
 NAME =	libft.a
-FLAGS =	-Wall -Wextra -Werror
-CC = 	gcc
-ODIR =	bin/
-IDIR =
-SRC =
-OBJ =	$(SRC:.c=.o)
-EXT =	$(IDIR)$(NAME:.a=.h)
 
-EXT +=	Makefile
-# **************************************************************************** #
-# char                                                                         #
-# **************************************************************************** #
-SRC +=	ft_isalpha.c
-SRC +=	ft_isdigit.c
-SRC +=	ft_isalnum.c
-SRC +=	ft_isascii.c
-SRC +=	ft_isprint.c
-SRC +=	ft_toupper.c
-SRC += ft_tolower.c
+LIB =	ar rc
 
-# **************************************************************************** #
-# mem                                                                          #
-# **************************************************************************** #
-SRC +=	ft_memset.c
-SRC +=	ft_bzero.c
-SRC +=	ft_memcpy.c
-SRC +=	ft_memccpy.c
-SRC +=	ft_memmove.c
-SRC +=	ft_memchr.c
-SRC +=	ft_memcmp.c
+RLIB =	ranlib 
 
-SRC +=	ft_memalloc.c
-SRC +=	ft_memdel.c
-# **************************************************************************** #
-# put                                                                          #
-# **************************************************************************** #
-SRC +=	ft_putchar.c
-SRC +=	ft_putchar_fd.c
-SRC +=	ft_putendl.c
-SRC +=	ft_putendl_fd.c
-SRC +=	ft_putnbr.c
-SRC +=	ft_putnbr_fd.c
-SRC +=	ft_putstr.c
-SRC +=	ft_putstr_fd.c
-# **************************************************************************** #
-# str                                                                          #
-# **************************************************************************** #
-SRC +=	ft_strlen.c
-SRC +=	ft_strdup.c
-SRC +=	ft_strcpy.c
-SRC +=	ft_strncpy.c
-SRC +=	ft_strcat.c
-SRC +=	ft_strncat.c
-SRC +=	ft_strlcat.c
-SRC +=	ft_strchr.c
-SRC +=	ft_strrchr.c
-SRC +=	ft_strstr.c
-SRC +=	ft_strnstr.c
-SRC +=	ft_strcmp.c
-SRC +=	ft_strncmp.c
+SRCS =	ft_putchar.c \
+		ft_putstr.c \
+		ft_isalpha.c \
+		ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isascii.c \
+		ft_isprint.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_atoi.c \
+		ft_itoa.c \
+		ft_strnew.c \
+		ft_strdel.c \
+		ft_strclr.c \
+		ft_strdup.c \
+		ft_strlen.c \
+		ft_strcpy.c \
+		ft_strncpy.c \
+		ft_strcat.c \
+		ft_strncat.c \
+		ft_strlcat.c \
+		ft_strchr.c \
+		ft_strrchr.c \
+		ft_strstr.c \
+		ft_strnstr.c \
+		ft_strcmp.c \
+		ft_strncmp.c \
+		ft_memset.c \
+		ft_bzero.c \
+		ft_memcpy.c \
+		ft_memccpy.c \
+		ft_memmove.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memalloc.c \
+		ft_memdel.c \
+		ft_striter.c \
+		ft_striteri.c \
+		ft_strmap.c \
+		ft_strmapi.c \
+		ft_strequ.c \
+		ft_strnequ.c \
+		ft_strsub.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
+		ft_strsplit.c \
+		ft_putendl.c \
+		ft_putnbr.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
 
-SRC +=	ft_strnew.c
-SRC +=	ft_strdel.c
-SRC +=	ft_strclr.c
-SRC +=	ft_striter.c
-SRC +=	ft_striteri.c
-SRC +=	ft_strmap.c
-SRC +=	ft_strmapi.c
-SRC +=	ft_strequ.c
-SRC +=	ft_strnequ.c
-SRC +=	ft_strsub.c
-SRC +=	ft_strjoin.c
-SRC +=	ft_strtrim.c
-SRC +=	ft_strsplit.c
-# **************************************************************************** #
-# integer                                                                      #
-# **************************************************************************** #
-SRC +=	ft_atoi.c
-SRC +=	ft_itoa.c
+OBJS =	$(SRCS:.c=.o)
 
-O =		$(addprefix $(ODIR), $(OBJ))
-# vpath %.c src/:src/char/:src/conversion/:src/memory/:src/put/:src/str/:src/lst/
+all: 	$(NAME)
 
-all: $(NAME)
-
-love: all
-
-norm:
-	norminette $(S)
-
-$(NAME): $(O) $(EXT)
-	@ar rc $(NAME) $(O)
-	@ranlib $(NAME)
-
-$(ODIR)%.o: %.c $(EXT)
-	@echo "-> Compiling $<..."
-	@$(CC) $(FLAGS) -c $< -o $@
-
-$(O): | ./bin
-
-./bin:
-	@mkdir $(ODIR)
+$(NAME):
+		@$(CC) $(FLAG) $(SRCS)
+		@$(LIB) $(NAME) $(OBJS)
+		@$(RLIB) $(NAME)
 
 clean:
-	@echo "-> Cleaning libft object files..."
-	@rm -f bin/*.o
+		@/bin/rm -f $(OBJS)
 
-fclean: clean
-	@echo "-> Cleaning $(NAME)..."
-	@rm -f $(NAME) 
+fclean:	clean
+		@/bin/rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re
