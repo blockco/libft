@@ -6,7 +6,7 @@ NAME =	libft.a
 
 LIB =	ar rc
 
-RLIB =	ranlib 
+RLIB =	ranlib
 
 SRCS =	ft_putchar.c \
 		ft_putstr.c \
@@ -60,6 +60,12 @@ SRCS =	ft_putchar.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
+		ft_lstnew.c \
+		ft_lstdelone.c \
+		ft_lstdel.c \
+		ft_lstadd.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
 
 OBJS =	$(SRCS:.c=.o)
 
