@@ -66,6 +66,11 @@ SRCS =	ft_putchar.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_itoa_base.c \
+		ft_basesize.c \
+		ft_findspace.c \
+		ft_findsize.c \
+		ft_findhex.c \
 
 OBJS =	$(SRCS:.c=.o)
 

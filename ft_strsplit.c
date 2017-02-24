@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 14:47:05 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/10/01 14:47:06 by rpassafa         ###   ########.fr       */
+/*   Created: 2017/02/23 21:08:55 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/23 21:08:56 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*word_builder(char const *str, char c, unsigned int *index)
+char		*word_builder(char const *str, char c, unsigned int *index)
 {
 	unsigned	i;
 	unsigned	start;
@@ -39,7 +39,7 @@ static char		*word_builder(char const *str, char c, unsigned int *index)
 	return (word);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	unsigned	i;
 	unsigned	j;

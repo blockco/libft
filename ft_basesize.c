@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_basesize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/23 20:37:32 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/23 20:37:33 by rpassafa         ###   ########.fr       */
+/*   Created: 2017/02/23 21:10:26 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/23 21:10:27 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int		findsizebase(int value, int base)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	int size;
+
+	size = 0;
+	while (value)
+	{
+		size++;
+		value = value / base;
+	}
+	return (size);
 }

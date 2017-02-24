@@ -5,22 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 14:47:57 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/10/01 14:47:58 by rpassafa         ###   ########.fr       */
+/*   Created: 2017/02/23 21:09:22 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/23 21:09:23 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		findspace(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] <= ' ' && s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strtrim(char const *s)
 {

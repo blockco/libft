@@ -5,25 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 14:35:42 by rpassafa          #+#    #+#             */
-/*   Updated: 2016/10/01 14:35:44 by rpassafa         ###   ########.fr       */
+/*   Created: 2017/02/23 20:37:58 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/23 21:16:22 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		get_size(long n)
-{
-	int s;
-
-	s = 0;
-	while (n != 0)
-	{
-		n = n / 10;
-		s++;
-	}
-	return (s);
-}
 
 char	*ft_itoa(int n)
 {

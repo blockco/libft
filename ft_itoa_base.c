@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassafa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/23 20:37:32 by rpassafa          #+#    #+#             */
-/*   Updated: 2017/02/23 20:37:33 by rpassafa         ###   ########.fr       */
+/*   Created: 2017/02/23 20:37:47 by rpassafa          #+#    #+#             */
+/*   Updated: 2017/02/23 20:37:48 by rpassafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+char	*ft_itoa_base(int value, int base)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	long	n;
+	int		size;
+	char	*ret;
+
+	n = value;
+	if (value == 0)
+		return ("0");
+	if (value < 0)
+		n = -1 * n;
+	size = findsizebase(n, base);
+	if (value < 0 && base == 10)
+		size++;
+	ret = (char*)malloc(size + 1);
+	ret[size] = '\0';
+	size--;
+	while (n)
+	{
+		ret[size] = findhex(n, base);
+		n = n / base;
+		size--;
+	}
+	if (value < 0 && base == 10)
+		ret[0] = '-';
+	return (ret);
 }
